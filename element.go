@@ -128,6 +128,18 @@ func (e *Element) GetRequestPad(padTemplate *PadTemplate, name string, caps *Cap
 	return
 }
 
+func (e *Element) GetRequestPadByName(name string) (pad *Pad) {
+
+	n := (*C.gchar)(unsafe.Pointer(C.CString(name)))
+	defer C.g_free(C.gpointer(unsafe.Pointer(n)))
+	CPad := C.gst_element_get_request_pad(e.GstElement, n)
+	pad = &Pad{
+		pad: CPad,
+	}
+
+	return
+}
+
 func (e *Element) GetStaticPad(name string) (pad *Pad) {
 
 	n := (*C.gchar)(unsafe.Pointer(C.CString(name)))
