@@ -124,8 +124,7 @@ func (e *Pad) SetObject(name string, value interface{}) {
 		structure := value.(*Structure)
 		C.X_gst_g_pad_set_structure(e.pad, cname, structure.C)
 	case *Pad:
-		pad := value.(*Pad)
-		C.X_gst_g_object_set_pad(e.pad, cname, pad)
+		C.X_gst_g_pad_set(e.pad, cname, value)
 	default:
 		panic(fmt.Errorf("SetObject: don't know how to set value for type %T", value))
 	}
