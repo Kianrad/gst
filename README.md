@@ -34,7 +34,7 @@ export GST_PLUGIN_PATH=/opt/homebrew/lib/gstreamer-1.0/
 Then
 
 ```sh
-go get github.com/notedit/gst
+go get github.com/Kianrad/gst
 ```
 
 
@@ -43,7 +43,7 @@ go get github.com/notedit/gst
 
 ## Examples
 
-https://github.com/notedit/gst-go-demo
+https://github.com/Kianrad/gst-go-demo
 
 
 
