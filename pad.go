@@ -52,6 +52,10 @@ type Pad struct {
 	pad *C.GstPad
 }
 
+type GValue struct {
+	GValue *C.GValue
+}
+
 func (p *Pad) Link(sink *Pad) (padLinkReturn PadLinkReturn) {
 	padLinkReturn = PadLinkReturn(C.gst_pad_link(p.pad, sink.pad))
 	return
@@ -124,7 +128,8 @@ func (e *Pad) SetObject(name string, value interface{}) {
 		structure := value.(*Structure)
 		C.X_gst_g_pad_set_structure(e.pad, cname, structure.C)
 	case *Pad:
-		C.X_gst_g_pad_set(e.pad, cname, value)
+		pad := value.(*GValue)
+		C.X_gst_g_pad_set(e.pad, cname, pad.GValue)
 	default:
 		panic(fmt.Errorf("SetObject: don't know how to set value for type %T", value))
 	}
