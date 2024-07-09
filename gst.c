@@ -65,6 +65,10 @@ void X_gst_g_object_set_structure(GstElement *e, const gchar* p_name, const GstS
   g_object_set(G_OBJECT(e), p_name, p_value, NULL);
 }
 
+void X_gst_g_object_set_pad(GstElement *e, const gchar* p_name, const GstPad *p_value) {
+  g_object_set(G_OBJECT(e), p_name, p_value, NULL);
+}
+
 void X_gst_g_object_set_element(GstElement *e, const gchar* p_name, const GstElement *p_value) {
   g_object_set(G_OBJECT(e), p_name, p_value, NULL);
 }
